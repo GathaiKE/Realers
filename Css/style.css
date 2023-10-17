@@ -71,7 +71,7 @@ nav{
 }
 
 .container{
-    background-image: url(./assets/landing.jpg);
+    background-image: url(../assets/landing.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -462,6 +462,135 @@ form>span>select{
 .profile>span{
     border-bottom: 1px grey solid;
 }
+
+.pay-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 8% 20%;
+}
+
+.pay-container>form>span{
+    display: flex;
+    flex-direction: row;
+}
+
+.pay-container>form>span>span>img{
+    height: 30px;
+    width: auto;
+}
+.pay-container>span>select{
+    width: fit-content;
+    padding: 7px;
+    background: purple;
+    color: white;
+}
+
+.admin-container{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    padding: 3% 2%;
+
+}
+
+.sidenav{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: bold;
+    position: fixed;
+    padding-top: 2%;
+}
+
+.sidenav>a{
+    border-bottom: 1px solid purple;
+    box-shadow: 10px 10px 8px #888888;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.sidenav>a:active{
+    color:rgba(200, 71, 138, 0.55);
+}
+
+.admin-body{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+}
+.searchbar{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;position: fixed;
+    padding: 25px 0;
+    background-color: white;
+}
+
+.searchbar>input{
+    border: 2px solid black;
+    padding: 5px;
+    width: 40%;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+.searchbar>label{
+    font-weight: bold;
+}
+
+#del{
+    color: red;
+    border: 2px solid red;
+    width: fit-content;
+    padding: 5px;
+    background-color: white;
+    font-weight: bold;
+}
+
+.active{
+    color: rgba(200, 71, 138, 0.55);
+}
+
+.user>img{
+    width: 40px;
+    height: 40px;
+    border: 1px solid purple;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.user-container{
+    padding: 10% ;
+}
+
+.user-part, .user{
+    display: flex;
+}
+
+.user{
+    border: none;
+    box-shadow: 8px 8px 6px #888888;
+    padding: 10px;
+    display: flex ;
+    flex-direction: column;
+    gap: 8px;
+}
+.user-part>label{
+    font-weight: bold;
+}
+
+/* .user-part{
+    display
+} */
+
 
 
 

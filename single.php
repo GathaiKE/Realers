@@ -1,3 +1,33 @@
+<?php
+if(isset($_GET["page"])){
+    $page = $_GET["page"];
+
+    if($page == "properties"){
+        include('properties.php');
+    } elseif($page == "profile"){
+        include("profile.php");
+    } elseif($page == "requests"){
+        include("requests.php");
+    } elseif($page == "insert"){
+        include("insert.php");
+    } elseif($page == "single"){
+        include("single.php");
+    } elseif($page == "users"){
+        include("users.php");
+    } elseif($page == "payment"){
+        include("payment.php");
+    } elseif($page = "admin"){
+        include("admin.php");
+    } elseif($page == "rent"){
+        include("rent.php");
+    } else{
+        include("index.php");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +40,13 @@
 <body>
     <nav>
         <div class="menu">
-            <a href="#">Home</a>
-            <a href="#" >Properties</a>
-            <a href="#" >Single</a>
-            <a href="#" >Rent</a>
-            <a href="#" >Payment</a>
-            <a href="#" >Admin</a>
-            <a href="#" >Profile</a>
+            <a href="index.php">Home</a>
+            <a href="properties.php" >Properties</a>
+            <a href="single.php" >Single</a>
+            <a href="rent.php" >Rent</a>
+            <a href="payment.php" >Payment</a>
+            <a href="admin.php" >Admin</a>
+            <a href="profile.php" >Profile</a>
         </div>
 
         <div class="mobile menu">
@@ -29,13 +59,13 @@
                 </span>
             </div>
             <div class="m-menu">
-                <a href="#">Home</a>
-                <a href="#" >Properties</a>
-                <a href="#" >Single</a>
-                <a href="#" >Rent</a>
-                <a href="#" >Payment</a>
-                <a href="#" >Admin</a>
-                <a href="#" >Profile</a>
+                <a href="index.php">Home</a>
+                <a href="properties.php" >Properties</a>
+                <a href="single.php" >Single</a>
+                <a href="rent.php" >Rent</a>
+                <a href="payment.php" >Payment</a>
+                <a href="admin.php" >Admin</a>
+                <a href="profile.php" >Profile</a>
             </div>
         </div>
         <div class="login">
@@ -47,10 +77,6 @@
     </nav>
     
     <div class="single-prop-container">
-        <div class="search">
-            <label for="search">Search : </label>
-            <input type="text">
-        </div>
         <h1>Queensland Appartments</h1>
         <img src="./assets/landing.jpg" alt="">
         <div class="single-part">
