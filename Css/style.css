@@ -587,10 +587,43 @@ form>span>select{
     font-weight: bold;
 }
 
-/* .user-part{
-    display
-} */
+.rcontainer,.logincontainer{
+    width: 100%;
+    height: 100%;
+    padding: 5% 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
 
+.rcontainer>h2{
+    color: purple;
+}
+.rcontainer>form{
+    padding: 20px;
+    width: 50%;
+}
+
+#logintag>a{
+    text-decoration: none;
+    color: purple;
+}
+
+#logintag{
+    width: 50%;
+    height: fit-content;
+    padding: 1%;
+    text-align: left;
+}
+
+#phoneflx{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+}
 
 
 
