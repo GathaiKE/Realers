@@ -1,9 +1,21 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+error_reporting(E_ALL);
+ini_set('error_log', 'error.log');
 
-$server = $_SERVER["SERVER_NAME"];
-$user= "admin";
+
+$server = "localhost";
+$user = "admin";
 $dbpassword = "Admin@123";
 $db = "Realers";
+
+function validate_data($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 
 if(isset($_GET["page"])){
     $page = $_GET['page'];
@@ -25,6 +37,7 @@ $password;
 $err;
 $phone;
 $role = "user";
+$profile = "default";
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -69,18 +82,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     echo "Registration Successfull!";
 
-
-    function validate_data($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $reg_stmt->close();
     $conn->close();
-} else{
-    echo "Unknown error occured";
+
+    header("Location: login.php");
+    exit;
 }
 ?>
 
@@ -97,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <div class="rcontainer">
 
         <h2>Sign Up</h2>
-        <form action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php  echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <span>
                 <label for="fname"> First Name : </label>
                 <input type="text" name="fname" placeholder="John">
@@ -125,7 +131,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <label for="password">Password : </label>
                 <input type="password" name="password" placeholder="Enter a strong password">
             </span>
-            <button type="submit" onclick="window.location.href='login.php'">Register</button>
+            <button type="submit">Register</button>
         </form>
         <span id="logintag">
             <a href="login.php">log in</a>

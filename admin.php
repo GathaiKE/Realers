@@ -79,11 +79,11 @@ if(isset($_GET["page"])){
             <a href="#" class="active">Appartments</a>
             <a href="users.php">Users</a>
             <a href="requests.php">Requests</a>
+            <a href="insert.php">New Property</a>
         </div>
         <div class="admin-body">
-            <span class="searchbar">
-                <label for="search">Search : </label>
-                <input type="text" class="search">
+                    <label for="search">Search : </label>
+                    <input type="text" class="search">
             </span>
             <div class="props-container">
             <h2>All Appartments</h2>

@@ -40,7 +40,7 @@ if(isset($_GET["page"])){
 <body>
     <nav>
         <div class="menu">
-            <a href="index.php">Home</a>
+            <a href="#">Home</a>
             <a href="properties.php" >Properties</a>
             <a href="single.php" >Single</a>
             <a href="rent.php" >Rent</a>
@@ -69,8 +69,8 @@ if(isset($_GET["page"])){
             </div>
         </div>
         <div class="login">
-            <a  href="#" id="log">Log In</a>
-            <a  href="#" id="reg">Sign Up</a>
+            <a  href="login.php" id="log">Log In</a>
+            <a  href="register.php" id="reg">Sign Up</a>
         </div>
         <div class="pfp">
             <img src="./assets/pfp.webp" alt="profile" id="pfp-img">
@@ -82,7 +82,7 @@ if(isset($_GET["page"])){
         <div class="cover">
             <h1>REALERS REAL ESTATE AGENCY</h1>
             <h2>Live with us, live large, live classy</h2>
-            <button id="sign-up">Sign Up</button>
+            <button id="sign-up" onclick="window.location.href='register.php'">Sign Up</button>
         </div>
     </div>
     <div class="mid-section">
