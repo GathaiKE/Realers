@@ -1,22 +1,56 @@
+<?php
+session_start();
+
+if(isset($_GET["page"])){
+    $page = $_GET["page"];
+
+    if($page == "properties"){
+        include('properties.php');
+    } elseif($page == "profile"){
+        include("profile.php");
+    } elseif($page == "requests"){
+        include("requests.php");
+    } elseif($page == "insert"){
+        include("insert.php");
+    } elseif($page == "single"){
+        include("single.php");
+    } elseif($page == "users"){
+        include("users.php");
+    } elseif($page == "payment"){
+        include("payment.php");
+    } elseif($page = "admin"){
+        include("admin.php");
+    } elseif($page == "rent"){
+        include("rent.php");
+    } else{
+        include("index.php");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realers</title>
-    <link rel="stylesheet" href="/Css/">
+    <link rel="stylesheet" href="./Css/style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <nav>
         <div class="menu">
             <a href="#">Home</a>
-            <a href="#" >Properties</a>
-            <a href="#" >Single</a>
-            <a href="#" >Rent</a>
-            <a href="#" >Payment</a>
-            <a href="#" >Admin</a>
-            <a href="#" >Profile</a>
+            <a href="properties.php" >Properties</a>
+            <a href="rent.php" >Rent</a>
+            <a href="payment.php" >Payment</a>
+            <?php
+                if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                    echo "<a href='admin.php' >Admin</a>";
+                }
+            ?>
         </div>
 
         <div class="mobile menu">
@@ -29,22 +63,26 @@
                 </span>
             </div>
             <div class="m-menu">
-                <a href="#">Home</a>
-                <a href="#" >Properties</a>
-                <a href="#" >Single</a>
-                <a href="#" >Rent</a>
-                <a href="#" >Payment</a>
-                <a href="#" >Admin</a>
-                <a href="#" >Profile</a>
+                <a href="index.php">Home</a>
+                <a href="properties.php" >Properties</a>
+                <a href="rent.php" >Rent</a>
+                <a href="payment.php" >Payment</a>
+                <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="login">
-            <a  href="#" id="log">Log In</a>
-            <a  href="#" id="reg">Sign Up</a>
+            <a  href="login.php" id="log">Log In</a>
+            <a  href="register.php" id="reg">Sign Up</a>
         </div>
-        <div class="pfp">
-            <img src="./assets/pfp.webp" alt="profile" id="pfp-img">
-        </div>
+        <?php if(isset($_SESSION["user_id"])){ ?>
+            <div class="pfp">
+                <img src="<?php echo $_SESSION["pfp"] ?>" onclick="window.location.href='profile.php'" alt="profile" id="pfp-img">
+            </div>
+        <?php } ?>
     </nav>
 
     <div class="container">
@@ -52,7 +90,7 @@
         <div class="cover">
             <h1>REALERS REAL ESTATE AGENCY</h1>
             <h2>Live with us, live large, live classy</h2>
-            <button id="sign-up">Sign Up</button>
+            <button id="sign-up" onclick="window.location.href='register.php'">Sign Up</button>
         </div>
     </div>
     <div class="mid-section">
@@ -85,9 +123,9 @@
     <div class="contact-us">
         <h2>Contact Us</h2>
         <p>Send us a message today and we will get back to you as soon as possible</p>
-        <form action="contact.php">
+        <form action="contact_us.php" method="post">
             <span>
-                <label for="name">Name :</label> <input type="text" name="name" id="name">
+                <label for="email">Your Email :</label> <input type="text" name="email" id="name">
             </span>
             <span>
                 <label for="subject">Subject : </label><input type="text" name="subject">
