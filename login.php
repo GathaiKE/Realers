@@ -68,6 +68,8 @@ if($conn->connect_error){
                 echo $err;
             } else{
                 $_SESSION["user_id"] = $user_data['user_id'];
+                $_SESSION["role"] = $user_data["role"];
+                $_SESSION["pfp"] = $user_data["profile"];
                 header("Location:properties.php");
                 exit;
             }

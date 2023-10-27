@@ -1,0 +1,15 @@
+@import url(style.css);
+
+
+.approvecontainer{
+    width:100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5% 10%;
+}
+
+.approvecontainer>form{
+    width: 40%;
+}

@@ -1,0 +1,40 @@
+@import url(style.css);
+
+
+.icontainer{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-top: 3%;
+}
+
+.larger{
+    width: 100%;
+    height: 100%;
+    padding: 3% 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.apprt_parts{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.apprt_parts>span>input{
+    width: 50%;
+}
+
+
+@media screen and (max-width:768px){
+
+
+    .apprt_parts>span{
+        display:flex;
+        flex-direction: column;
+    }
+}
+

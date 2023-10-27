@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if(isset($_GET["page"])){
     $page = $_GET["page"];
 
@@ -42,11 +44,13 @@ if(isset($_GET["page"])){
         <div class="menu">
             <a href="#">Home</a>
             <a href="properties.php" >Properties</a>
-            <a href="single.php" >Single</a>
             <a href="rent.php" >Rent</a>
             <a href="payment.php" >Payment</a>
-            <a href="admin.php" >Admin</a>
-            <a href="profile.php" >Profile</a>
+            <?php
+                if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                    echo "<a href='admin.php' >Admin</a>";
+                }
+            ?>
         </div>
 
         <div class="mobile menu">
@@ -61,20 +65,24 @@ if(isset($_GET["page"])){
             <div class="m-menu">
                 <a href="index.php">Home</a>
                 <a href="properties.php" >Properties</a>
-                <a href="single.php" >Single</a>
                 <a href="rent.php" >Rent</a>
                 <a href="payment.php" >Payment</a>
-                <a href="admin.php" >Admin</a>
-                <a href="profile.php" >Profile</a>
+                <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="login">
             <a  href="login.php" id="log">Log In</a>
             <a  href="register.php" id="reg">Sign Up</a>
         </div>
-        <div class="pfp">
-            <img src="./assets/pfp.webp" alt="profile" id="pfp-img">
-        </div>
+        <?php if(isset($_SESSION["user_id"])){ ?>
+            <div class="pfp">
+                <img src="<?php echo $_SESSION["pfp"] ?>" onclick="window.location.href='profile.php'" alt="profile" id="pfp-img">
+            </div>
+        <?php } ?>
     </nav>
 
     <div class="container">
@@ -115,9 +123,9 @@ if(isset($_GET["page"])){
     <div class="contact-us">
         <h2>Contact Us</h2>
         <p>Send us a message today and we will get back to you as soon as possible</p>
-        <form action="contact.php">
+        <form action="contact_us.php" method="post">
             <span>
-                <label for="name">Name :</label> <input type="text" name="name" id="name">
+                <label for="email">Your Email :</label> <input type="text" name="email" id="name">
             </span>
             <span>
                 <label for="subject">Subject : </label><input type="text" name="subject">

@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION["user_id"])){
+    header("Location: login.php");
+    exit;
+}
+
 if(isset($_GET["page"])){
     $page = $_GET["page"];
 
@@ -43,11 +49,13 @@ if(isset($_GET["page"])){
         <div class="menu">
             <a href="index.php">Home</a>
             <a href="properties.php" >Properties</a>
-            <a href="single.php" >Single</a>
             <a href="rent.php" >Rent</a>
             <a href="payment.php" >Payment</a>
-            <a href="admin.php" >Admin</a>
-            <a href="profile.php" >Profile</a>
+            <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
         </div>
 
         <div class="mobile menu">
@@ -62,60 +70,49 @@ if(isset($_GET["page"])){
             <div class="m-menu">
                 <a href="index.php">Home</a>
                 <a href="properties.php" >Properties</a>
-                <a href="single.php" >Single</a>
                 <a href="rent.php" >Rent</a>
                 <a href="payment.php" >Payment</a>
-                <a href="admin.php" >Admin</a>
-                <a href="profile.php" >Profile</a>
+                <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="login">
-            <a  href="#" id="log">Log out</a>
+            <a  href="logout.php" id="log">Log out</a>
         </div>
-        <div class="pfp">
-            <img src="./assets/pfp.webp" alt="profile" id="pfp-img">
-        </div>
+        <?php if(isset($_SESSION["user_id"])){ ?>
+            <div class="pfp">
+                <img src="<?php echo $_SESSION["pfp"] ?>" onclick="window.location.href='profile.php'" alt="profile" id="pfp-img">
+            </div>
+        <?php } ?>
     </nav>
     <div class="pay-container">
         <h1>Rent Payment</h1>
-        <form action="">
-            <span>
-                <label for="appname">Appartment Name : </label>
-                <select name="appartment" id="">
-                    <option value="queensland">Queensland Appartment</option>
-                    <option value="Kings">Kings Villa</option>
-                </select>
-            </span>
-            <span>
-                <label for="tenant">Tenant Name : </label>
-                <input type="text" value="John Doe">
-            </span>
-            <span>
-                <Label>Room No : </Label>
-                <input type="text" value="45">
-            </span>
+        <form action="process_payment.php" method="post">
             <span>
                 <label for="payment-method">Mode of payment : </label>
                 <span>
-                    <input type="radio" name="mpesa" id="mpesa" checked>
+                    <input type="radio" name="payment_method" id="mpesa" value="mpesa">
                     <img src="./assets/mpesa-seeklogo.com.svg" alt="mpesa">
                 </span>
                 <span>
-                    <input type="radio" name="kcb" id="kcb">
+                    <input type="radio" name="payment_method" id="kcb" value="kcb">
                     <img src="./assets/kcb-group-plc-seeklogo.com.svg" alt="kcb">
                 </span>
                 <span>
-                    <input type="radio" name="equity" id="equity">
+                    <input type="radio" name="payment_method" id="equity" value="equity">
                     <img src="./assets/eqbank.svg" alt="equity">
                 </span>
             </span>
             <span>
                 <label for="amount">Amount</label>
-                <input type="text" value="20000">
+                <input type="number" name="amount">
             </span>
             <span>
                 <label for="code">Transaction Code : </label>
-                <input type="text" value="MK3JU44352">
+                <input type="text" name="code">
             </span>
             <button type="submit" id="expand">Submit Payment</button>
         </form>
