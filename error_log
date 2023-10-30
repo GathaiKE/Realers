@@ -1,0 +1,2 @@
+[27-Oct-2023 14:11:36 Europe/Moscow] PHP Warning:  move_uploaded_file(uploads/appartments/tanya-semenchuk-0u0kKxfpvQ0-unsplash.jpg): Failed to open stream: Permission denied in /var/www/html/Realers/update_apart_script.php on line 89
+[27-Oct-2023 14:11:36 Europe/Moscow] PHP Warning:  move_uploaded_file(): Unable to move &quot;/tmp/phpuDN0NS&quot; to &quot;uploads/appartments/tanya-semenchuk-0u0kKxfpvQ0-unsplash.jpg&quot; in /var/www/html/Realers/update_apart_script.php on line 89
