@@ -64,6 +64,9 @@ $prop = $result->fetch_assoc();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realers</title>
     <link rel="stylesheet" href="./Css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -73,7 +76,11 @@ $prop = $result->fetch_assoc();
             <a href="properties.php" >Properties</a>
             <a href="rent.php" >Rent</a>
             <a href="payment.php" >Payment</a>
-            <a href="admin.php" >Admin</a>
+            <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
         </div>
 
         <div class="mobile menu">
@@ -90,7 +97,11 @@ $prop = $result->fetch_assoc();
                 <a href="properties.php" >Properties</a>
                 <a href="rent.php" >Rent</a>
                 <a href="payment.php" >Payment</a>
-                <a href="admin.php" >Admin</a>
+                <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="login">

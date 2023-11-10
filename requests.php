@@ -72,6 +72,9 @@ $result = $fetch_req_stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realers</title>
     <link rel="stylesheet" href="./Css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -126,13 +129,14 @@ $result = $fetch_req_stmt->get_result();
             <a href="insert.php">New Property</a>
         </div>
         <div class="admin-body">
-            <span class="searchbar">
+            <!-- <span class="searchbar">
                 <label for="search">Search : </label>
                 <input type="text" class="search">
-            </span>
+            </span> -->
             <div class="user-container">
-            <h2>All Users</h2>
+            <h2>All Requests</h2>
             <?php
+            if($result->num_rows > 0) {
              while($req = $result->fetch_assoc()){ 
                 $req_id = $req["reqid"];
                 ?>
@@ -174,11 +178,16 @@ $result = $fetch_req_stmt->get_result();
                         </span>
                         <span class="btns">
                             <button id="expand" onclick="window.location.href='approve_request.php?reqid=<?php echo $req['reqid']; ?>'">Approve</button>
-                            <button id="del" onclick="">Reject</button>
+                            <button id="del" onclick='window.location.href="reject_request.php?reqid=<?php echo $req["reqid"]; ?>"'>Reject</button>
                         </span>
                     </div>
                 </div>
-            <?php } ?>
+            <?php } 
+        } else {?>
+            <div class="full">
+                <p>There are no requests at the moment</p>
+            </div>
+        <?php }?>
         </div>
     </div>
         </div>

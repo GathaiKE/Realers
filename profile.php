@@ -71,6 +71,9 @@ $conn = new mysqli($server, $user, $password, $db);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realers</title>
     <link rel="stylesheet" href="./Css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <script src="script.js" defer></script>
 </head>
 <body>

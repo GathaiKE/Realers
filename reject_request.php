@@ -5,30 +5,16 @@ if(!isset($_SESSION["user_id"])){
     exit;
 }
 
-if(isset($_GET["page"])){
-    $page = $_GET["page"];
+if($_SESSION["role"] !== "admin"){
+    echo "Access denied! Admin privileges required";
+    header("Location: login.php");
+    exit;
+}
 
-    if($page == "properties"){
-        include('properties.php');
-    } elseif($page == "profile"){
-        include("profile.php");
-    } elseif($page == "requests"){
-        include("requests.php");
-    } elseif($page == "insert"){
-        include("insert.php");
-    } elseif($page == "single"){
-        include("single.php");
-    } elseif($page == "users"){
-        include("users.php");
-    } elseif($page == "payment"){
-        include("payment.php");
-    } elseif($page = "admin"){
-        include("admin.php");
-    } elseif($page == "rent"){
-        include("rent.php");
-    } else{
-        include("index.php");
-    }
+$req_id;
+
+if(isset($_GET["reqid"])){
+    $req_id = $_GET["reqid"];
 }
 
 ?>
@@ -40,17 +26,16 @@ if(isset($_GET["page"])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realers</title>
-    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./Css/approve.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </head>
 <body>
-
     <nav>
         <div class="menu">
-            <a href="index.php">Home</a>
+        <a href="index.php">Home</a>
             <a href="properties.php" >Properties</a>
             <a href="rent.php" >Rent</a>
             <a href="payment.php" >Payment</a>
@@ -74,8 +59,7 @@ if(isset($_GET["page"])){
                 <a href="index.php">Home</a>
                 <a href="properties.php" >Properties</a>
                 <a href="rent.php" >Rent</a>
-                <a href="payment.php" >Payment</a>
-                <?php
+                <a href="payment.php" >Payment</a><?php
                     if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
                         echo "<a href='admin.php' >Admin</a>";
                     }
@@ -91,33 +75,15 @@ if(isset($_GET["page"])){
             </div>
         <?php } ?>
     </nav>
-    <div class="pay-container">
-        <h1>Rent Payment</h1>
-        <form action="process_payment.php" method="post">
+    <div class="logincontainer approvecontainer">
+        <h2>Rejection Reason</h2>
+        <form action="rejectreq.php" method="post">
             <span>
-                <label for="payment-method">Mode of payment : </label>
-                <span>
-                    <input type="radio" name="payment_method" id="mpesa" value="mpesa">
-                    <img src="./assets/mpesa-seeklogo.com.svg" alt="mpesa">
-                </span>
-                <span>
-                    <input type="radio" name="payment_method" id="kcb" value="kcb">
-                    <img src="./assets/kcb-group-plc-seeklogo.com.svg" alt="kcb">
-                </span>
-                <span>
-                    <input type="radio" name="payment_method" id="equity" value="equity">
-                    <img src="./assets/eqbank.svg" alt="equity">
-                </span>
+                <label for="feedback">Feedback</label>
+                <textarea name="feedback" id="" cols="30" rows="10" placeholder="Give a reason for rejecting the request"></textarea>
             </span>
-            <span>
-                <label for="amount">Amount</label>
-                <input type="number" name="amount">
-            </span>
-            <span>
-                <label for="code">Transaction Code : </label>
-                <input type="text" name="code">
-            </span>
-            <button type="submit" id="expand">Submit Payment</button>
+            <input type="hidden" name="reqid" value="<?php echo $req_id; ?>">
+            <button type="submit" id="expand">Confirm Rejection</button>
         </form>
     </div>
 </body>

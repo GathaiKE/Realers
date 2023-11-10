@@ -347,9 +347,14 @@ select{
     cursor: pointer;
 }
 
+.full{
+    height: 100vh;
+    font-style: italic;
+}
+
 .single-prop-container>img{
-    width: 50%;
-    height: 50%;
+    width: 300px;
+    height: 300px;
 }
 
 .single-part{
