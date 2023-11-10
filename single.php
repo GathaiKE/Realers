@@ -76,7 +76,11 @@ $prop = $result->fetch_assoc();
             <a href="properties.php" >Properties</a>
             <a href="rent.php" >Rent</a>
             <a href="payment.php" >Payment</a>
-            <a href="admin.php" >Admin</a>
+            <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
         </div>
 
         <div class="mobile menu">
@@ -93,7 +97,11 @@ $prop = $result->fetch_assoc();
                 <a href="properties.php" >Properties</a>
                 <a href="rent.php" >Rent</a>
                 <a href="payment.php" >Payment</a>
-                <a href="admin.php" >Admin</a>
+                <?php
+                    if(isset($_SESSION["role"]) && $_SESSION["role"] === "admin"){
+                        echo "<a href='admin.php' >Admin</a>";
+                    }
+                ?>
             </div>
         </div>
         <div class="login">

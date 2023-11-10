@@ -121,10 +121,10 @@ if(!$result->num_rows > 0){
             <a href="requests.php">Requests</a>
             <a href="insert.php">New Property</a>
         </div>
-        <div class="admin-body">
+        <!-- <div class="admin-body">
                     <label for="search">Search : </label>
                     <input type="text" class="search">
-            </span>
+            </span> -->
             <div class="props-container">
             <h2>All Appartments</h2>
 

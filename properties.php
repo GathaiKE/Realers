@@ -118,10 +118,10 @@ if(!$result->num_rows > 0){
         <?php } ?>
     </nav>
     <div class="props-container">
-        <div class="search">
+        <!-- <div class="search">
                 <label for="search">Search : </label>
                 <input type="text">
-            </div>
+            </div> -->
         <h1>Our Various Properties Across the country include</h1>
 
         <?php while($prop = $result->fetch_assoc()){ ?>
